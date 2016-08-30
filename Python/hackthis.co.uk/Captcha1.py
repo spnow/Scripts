@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from PIL import Image
 import pytesseract # sudo pip install pytesseract && sudo apt-get install tesseract-ocr
 import requests
@@ -17,7 +18,6 @@ def postSolution():
 
     s = requests.Session() # Start a session
     s.post(login, data=payload) # Login
-    response = s.get(url).text # Get problem data
     captcha = s.get("https://www.hackthis.co.uk/levels/extras/captcha1.php")
     captcha = Image.open(StringIO(captcha.content))
     captcha.save("captcha1.png")
